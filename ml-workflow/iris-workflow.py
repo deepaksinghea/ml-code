@@ -40,3 +40,6 @@ target_names = ['class 0', 'class 1',
                 'class 2']
 print(classification_report(y_test, y_pred,
                             target_names=target_names))
+
+from joblib import dump 
+dump(clf, 'classifer.joblib') 
