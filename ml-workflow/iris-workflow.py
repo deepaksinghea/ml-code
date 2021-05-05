@@ -17,6 +17,10 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(
 X, y, test_size=0.25, random_state=0)
 
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+scaler.fit_transform(X_train)
+scaler.transform(X_test)
 
 from sklearn.linear_model import LogisticRegression
 clf = LogisticRegression(random_state=0).fit(X_train, y_train)
@@ -32,7 +36,7 @@ print("Confusion Matrix :")
 print(cm)
 
 from sklearn.metrics import classification_report
-target_names = ['Setosa', 'Versicolor',
-                'Virginica']
+target_names = ['class 0', 'class 1',
+                'class 2']
 print(classification_report(y_test, y_pred,
                             target_names=target_names))
